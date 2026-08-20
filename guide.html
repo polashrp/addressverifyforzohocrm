@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide | Address Verify & Customer Timezone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A2E;
+            background-color: #F8FAFC;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #E2E8F0;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: #3B82F6;
+        }
+
+        .nav a {
+            color: #475569;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #3B82F6;
+        }
+
+        .nav a.cta-button {
+            background: #3B82F6;
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .nav a.cta-button:hover {
+            background: #2563EB;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: #F1F5F9;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .toc h2 {
+            font-size: 1.2rem;
+            margin-top: 0 !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin: 0 !important;
+            padding: 0;
+        }
+
+        .toc ul li {
+            margin-bottom: 0.25rem;
+        }
+
+        .toc ul li a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+
+        .toc ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content */
+        .content {
+            padding: 3rem 0 4rem;
+        }
+
+        .content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content .subtitle {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 1.5rem;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            scroll-margin-top: 80px;
+        }
+
+        .content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+            scroll-margin-top: 80px;
+        }
+
+        .content p {
+            color: #334155;
+            margin-bottom: 1rem;
+        }
+
+        .content ul, .content ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: #334155;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content .note {
+            background: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            color: #1E3A8A;
+        }
+
+        .content .tip {
+            background: #F0FDF4;
+            border-left: 4px solid #22C55E;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            color: #166534;
+        }
+
+        .content .warning {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            color: #92400E;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .content table th {
+            background: #F1F5F9;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid #E2E8F0;
+            font-weight: 600;
+        }
+
+        .content table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .content table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .code-block {
+            background: #1E293B;
+            color: #E2E8F0;
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .code-block .comment {
+            color: #94A3B8;
+        }
+
+        .code-block .keyword {
+            color: #60A5FA;
+        }
+
+        .code-block .string {
+            color: #A7F3D0;
+        }
+
+        .code-block .function {
+            color: #FBBF24;
+        }
+
+        .code-block .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .code-block .copy-btn:hover {
+            background: #475569;
+        }
+
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: #94A3B8;
+            font-size: 0.9rem;
+            border-top: 1px solid #E2E8F0;
+            background: white;
+        }
+
+        .footer a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav a {
+                margin: 0 0.75rem;
+            }
+            .content h1 {
+                font-size: 2.2rem;
+            }
+            .code-block {
+                font-size: 0.8rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                📍 <span>Address Verify</span> & Timezone
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="guide.html">Guide</a>
+                <a href="#" class="cta-button">Install from Marketplace</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <section class="content">
+        <div class="container">
+            <h1>User Guide</h1>
+            <p class="subtitle">Get the most out of Address Verify & Customer Timezone for Zoho CRM.</p>
+
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>📑 Table of Contents</h2>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#api-configuration">API Configuration & Customization</a></li>
+                    <li><a href="#setup">Setup & Configuration</a></li>
+                    <li><a href="#using-features">Using the Features</a></li>
+                    <li><a href="#freemium">Freemium Model</a></li>
+                    <li><a href="#faq">Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <!-- Overview -->
+            <h2 id="overview">Overview</h2>
+            <p>This extension automatically verifies US addresses in your Leads, Contacts, and Accounts modules. It enriches each record with:</p>
+            <ul>
+                <li><strong>Latitude & Longitude</strong> — For mapping and territory planning</li>
+                <li><strong>County</strong> — For regional analysis and reporting</li>
+                <li><strong>Customer Time Zone</strong> — So you know the best time to call or email</li>
+                <li><strong>Data Quality Score</strong> — To prioritize data cleaning efforts</li>
+            </ul>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Verification is currently optimized for <strong>US addresses</strong>. Non-US addresses are skipped to conserve API usage.
+            </div>
+
+            <!-- How It Works -->
+            <h2 id="how-it-works">How It Works</h2>
+            <p>The extension uses the <strong>Geoapify Geocoding API</strong> to verify and enrich addresses. Here's the flow:</p>
+            <ol>
+                <li><strong>Trigger:</strong> A workflow rule fires on record creation or update in Leads, Contacts, or Accounts.</li>
+                <li><strong>Check:</strong> The function detects if the address is in the US. If not, it skips verification.</li>
+                <li><strong>Verify:</strong> It calls Geoapify to standardize the address and get latitude/longitude.</li>
+                <li><strong>Enrich:</strong> A second call to Geoapify Reverse Geocoding gets the time zone.</li>
+                <li><strong>Update:</strong> The record is updated with all new fields and a status (e.g., "Verified", "Invalid", "Missing").</li>
+            </ol>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> You can manually trigger verification by editing a record and saving it, or via the "Run" button on the workflow rule.
+            </div>
+
+            <!-- API Configuration -->
+            <h2 id="api-configuration">API Configuration & Customization</h2>
+            <p>The extension is built with <strong>Geoapify</strong> as the default address verification service. Here's everything you need to know about the API integration.</p>
+
+            <h3>Current API Service</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>API Endpoint</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Geoapify Forward Geocoding</strong></td>
+                        <td><code>https://api.geoapify.com/v1/geocode/search</code></td>
+                        <td>Address verification, standardization, and coordinates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Geoapify Reverse Geocoding</strong></td>
+                        <td><code>https://api.geoapify.com/v1/geocode/reverse</code></td>
+                        <td>Time zone lookup and additional address details</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>How to Modify the API Key</h3>
+            <p>To use your own Geoapify API key (or switch to a different provider), follow these steps:</p>
+
+            <ol>
+                <li><strong>Locate the Custom Function:</strong> Go to Zoho CRM Setup > Workflow Rules, find the "US Address Verification - Leads" rule, and click on the associated Custom Function.</li>
+                <li><strong>Find the API Key Variable:</strong> Look for the line where <code>apiKey</code> is defined. By default, it looks like:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre><span class="comment">// In the verifyAddressWithGeoapify function</span>
+<span class="keyword">apiKey</span> = <span class="string">"YOUR_GEOAPIFY_API_KEY"</span>;</pre>
+            </div>
+
+            <ol start="3">
+                <li><strong>Replace with Your Key:</strong> Replace <code>"YOUR_GEOAPIFY_API_KEY"</code> with your actual API key.</li>
+                <li><strong>Save and Test:</strong> Save the function and test with a record to ensure it works.</li>
+            </ol>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Keep your API key secure. Do not share it publicly. Use environment variables or connection settings if available.
+            </div>
+
+            <h3>Switch to a Different Address API Provider</h3>
+            <p>If you prefer to use a different geocoding service (e.g., Google Maps, OpenCage, or US Census), you can modify the function. Here's how:</p>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre><span class="comment">// ============================================
+// FUNCTION: verifyAddressWithYourProvider
+// PURPOSE: Replace this with your preferred API
+// ============================================</span>
+<span class="keyword">function</span> <span class="function">verifyAddressWithYourProvider</span>(street, city, state, zipCode, country)
+{
+    <span class="comment">// Step 1: Build your API URL with the correct format</span>
+    fullAddress = street + <span class="string">", "</span> + city + <span class="string">", "</span> + state + <span class="string">" "</span> + zipCode + <span class="string">", "</span> + country;
+    
+    <span class="comment">// Example: OpenCage Geocoder</span>
+    <span class="keyword">apiKey</span> = <span class="string">"YOUR_OPENCAGE_API_KEY"</span>;
+    url = <span class="string">"https://api.opencagedata.com/geocode/v1/json?q="</span> + encodeUrl(fullAddress) + <span class="string">"&key="</span> + apiKey;
+
+    <span class="comment">// Step 2: Make the API call</span>
+    response = invokeUrl
+    [
+        url: url
+        type: GET
+    ];
+
+    <span class="comment">// Step 3: Parse the response based on your provider's format</span>
+    <span class="comment">// This is where you adapt to the new API's response structure</span>
+    <span class="keyword">if</span>(response.get(<span class="string">"status"</span>) == <span class="string">"OK"</span>)
+    {
+        results = response.getJSON(<span class="string">"results"</span>);
+        <span class="keyword">if</span>(results.length() > 0)
+        {
+            result = Map();
+            result.put(<span class="string">"success"</span>, true);
+            
+            <span class="comment">// Example: Extract coordinates (OpenCage format)</span>
+            geometry = results.get(0).getJSON(<span class="string">"geometry"</span>);
+            result.put(<span class="string">"latitude"</span>, geometry.get(<span class="string">"lat"</span>));
+            result.put(<span class="string">"longitude"</span>, geometry.get(<span class="string">"lng"</span>));
+            
+            <span class="comment">// Extract address components</span>
+            components = results.get(0).getJSON(<span class="string">"components"</span>);
+            result.put(<span class="string">"county"</span>, components.get(<span class="string">"county"</span>, <span class="string">""</span>));
+            result.put(<span class="string">"state"</span>, components.get(<span class="string">"state"</span>, state));
+            result.put(<span class="string">"city"</span>, components.get(<span class="string">"city"</span>, city));
+            result.put(<span class="string">"zip"</span>, components.get(<span class="string">"postcode"</span>, zipCode));
+            
+            result.put(<span class="string">"status"</span>, <span class="string">"Verified"</span>);
+            <span class="keyword">return</span> result;
+        }
+    }
+    
+    <span class="comment">// Return error if something failed</span>
+    errorResult = Map();
+    errorResult.put(<span class="string">"success"</span>, false);
+    errorResult.put(<span class="string">"error"</span>, <span class="string">"Address not found or API error"</span>);
+    <span class="keyword">return</span> errorResult;
+}</pre>
+            </div>
+
+            <div class="note">
+                <strong>📌 Important Notes:</strong>
+                <ul>
+                    <li>Each API provider has a different response format. You must adapt the parsing logic accordingly.</li>
+                    <li>Make sure your new provider returns <strong>latitude, longitude, and time zone</strong> (or you'll need a separate time zone API).</li>
+                    <li>Update the <strong>API key</strong> in a secure location, preferably using Zoho's connection settings.</li>
+                    <li>Test thoroughly with various address formats before deploying to production.</li>
+                </ul>
+            </div>
+
+            <h3>Using Connection Settings for API Keys</h3>
+            <p>For better security, store your API key in Zoho's connection settings:</p>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre><span class="comment">// Instead of hardcoding the API key, use a connection</span>
+<span class="keyword">connection</span> = zoho.connection.get(<span class="string">"geoapify_conn"</span>);
+<span class="keyword">apiKey</span> = connection.get(<span class="string">"api_key"</span>);
+
+<span class="comment">// Then use it in your API call</span>
+url = <span class="string">"https://api.geoapify.com/v1/geocode/search?text="</span> + encodeUrl(fullAddress) + <span class="string">"&apiKey="</span> + apiKey;</pre>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Pro Tip:</strong> If you plan to switch API providers frequently, create a wrapper function that abstracts the API call. This way, you only need to change the wrapper logic, not every function that uses it.
+            </div>
+
+            <!-- Setup -->
+            <h2 id="setup">Setup & Configuration</h2>
+            <h3>1. Install the Extension</h3>
+            <p>Find the extension in the Zoho Marketplace and click <strong>Install</strong>. Follow the prompts to authorize it for your CRM.</p>
+
+            <h3>2. Configure Custom Fields</h3>
+            <p>The extension adds several custom fields to your Leads, Contacts, and Accounts. Make sure they are visible on your layouts:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>addressverifyusaforzohocrm__Full_Address_Status</code></td><td>Verification status (Verified / Invalid / Missing / Outside US)</td></tr>
+                    <tr><td><code>addressverifyusaforzohocrm__County</code></td><td>County name based on the verified address</td></tr>
+                    <tr><td><code>addressverifyusaforzohocrm__Customer_Timezone</code></td><td>IANA time zone name (e.g., America/New_York)</td></tr>
+                    <tr><td><code>addressverifyusaforzohocrm__Latitude</code> / <code>Longitude</code></td><td>Coordinates for mapping</td></tr>
+                    <tr><td><code>addressverifyusaforzohocrm__Data_Quality_Score</code></td><td>Score from 0–100 based on field completeness</td></tr>
+                    <tr><td><code>addressverifyusaforzohocrm__Duplicate_Flag</code></td><td>Indicates if a record has potential duplicates</td></tr>
+                </tbody>
+            </table>
+
+            <h3>3. Workflow Rules</h3>
+            <p>The extension includes workflow rules for each module. You can find them under <strong>Setup > Workflow Rules</strong>. They are named:</p>
+            <ul>
+                <li><strong>US Address Verification - Leads</strong></li>
+                <li><strong>US Address Verification - Contacts</strong></li>
+                <li><strong>US Address Verification - Accounts</strong></li>
+            </ul>
+            <p>Each rule is triggered on <strong>Create or Edit</strong> and calls the corresponding verification function.</p>
+
+            <!-- Using Features -->
+            <h2 id="using-features">Using the Features</h2>
+            <h3>Address Autocomplete</h3>
+            <p>When you type an address in a Lead, Contact, or Account, the extension suggests completions using Geoapify. Select a suggestion to auto-fill the address fields and trigger verification.</p>
+
+            <h3>Batch Verification</h3>
+            <p>To verify a large number of existing records, use the <strong>BatchVerifyAddresses</strong> scheduled workflow. It runs weekly on Sunday at 2 AM and processes records with missing or outdated verification.</p>
+            <p>You can also run it manually from the workflow rule page.</p>
+
+            <h3>Map View</h3>
+            <p>In the Related List of a module, you'll find a <strong>Map View</strong> tab that plots all records with latitude/longitude. Click a marker to open the record in CRM.</p>
+
+            <h3>Data Quality Dashboard</h3>
+            <p>A custom dashboard widget shows key metrics:</p>
+            <ul>
+                <li>Total records and verification rate</li>
+                <li>Quality score distribution (Excellent / Good / Fair / Poor)</li>
+                <li>Timezone distribution across your customers</li>
+                <li>Duplicate records count</li>
+            </ul>
+
+            <!-- Freemium -->
+            <h2 id="freemium">Freemium Model</h2>
+            <p>The extension follows a freemium model to suit different needs:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Free Plan</th>
+                        <th>Pro Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Verification limit</td><td>100/month</td><td>Unlimited</td></tr>
+                    <tr><td>Batch & scheduled checks</td><td>❌</td><td>✅</td></tr>
+                    <tr><td>Full API access</td><td>❌</td><td>✅</td></tr>
+                    <tr><td>Advanced analytics & maps</td><td>Basic</td><td>Full</td></tr>
+                    <tr><td>Support</td><td>Community</td><td>Priority</td></tr>
+                </tbody>
+            </table>
+            <p>If you exceed the free limit, you'll see a prompt to upgrade to the Pro version, which is available as a separate listing in the marketplace.</p>
+
+            <!-- FAQ -->
+            <h2 id="faq">Frequently Asked Questions</h2>
+            
+            <h3>Why are non-US addresses skipped?</h3>
+            <p>To optimize API usage and costs. The extension is designed for US addresses, but we may expand coverage in the future.</p>
+
+            <h3>How do I update an existing record?</h3>
+            <p>Simply edit and save the record. The workflow rule will trigger and re-verify the address.</p>
+
+            <h3>What happens if an address is invalid?</h3>
+            <p>The status is set to "Invalid" and the record is not enriched. You can review the error message in the <code>Address_Details</code> field.</p>
+
+            <h3>Can I change the Geoapify API key?</h3>
+            <p>Yes, update the <code>apiKey</code> variable in the Custom Functions. See the <a href="#api-configuration">API Configuration section</a> above for detailed instructions.</p>
+
+            <h3>Can I use a different address API provider?</h3>
+            <p>Yes! The extension is designed to be flexible. You can replace the Geoapify calls with any geocoding service that returns latitude, longitude, and address components. Refer to the <a href="#api-configuration">API Configuration section</a> for a code example.</p>
+
+            <h3>How do I test if the API is working?</h3>
+            <p>Create a test lead with a valid US address (e.g., "1600 Amphitheatre Parkway, Mountain View, CA 94043"). Save it and check if the status field updates to "Verified" and the latitude/longitude fields are populated.</p>
+
+            <div class="note">
+                <strong>📌 Need help?</strong> Visit our <a href="#">support page</a> or email us at support@yourapp.com.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Address Verify & Customer Timezone for Zoho CRM. Built with ❤️ by your team.</p>
+            <p><a href="#">Support</a> · <a href="#">Privacy</a> · <a href="#">Marketplace Listing</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Copy to clipboard functionality
+        function copyCode(button) {
+            const codeBlock = button.parentElement;
+            const code = codeBlock.querySelector('pre').innerText;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
