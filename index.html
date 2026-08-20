@@ -169,6 +169,7 @@
         /* Features Section */
         .features {
             padding: 4rem 0;
+            background: white;
         }
 
         .features h2 {
@@ -192,7 +193,7 @@
         }
 
         .feature-card {
-            background: white;
+            background: #F8FAFC;
             padding: 2rem;
             border-radius: 16px;
             border: 1px solid #E2E8F0;
@@ -220,90 +221,57 @@
             font-size: 0.95rem;
         }
 
-        /* Pricing Section */
-        .pricing {
-            background: white;
+        /* Perfect For Section */
+        .perfect-for {
             padding: 4rem 0;
+            background: #F8FAFC;
             border-top: 1px solid #E2E8F0;
             border-bottom: 1px solid #E2E8F0;
         }
 
-        .pricing h2 {
+        .perfect-for h2 {
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 3rem;
         }
 
-        .pricing > p {
-            text-align: center;
-            color: #475569;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .pricing-grid {
+        .perfect-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .pricing-card {
-            background: #F8FAFC;
+        .perfect-card {
+            background: white;
+            padding: 2rem;
             border-radius: 16px;
-            padding: 2.5rem;
             border: 1px solid #E2E8F0;
             text-align: center;
+            transition: transform 0.2s;
         }
 
-        .pricing-card.pro {
-            border-color: #3B82F6;
-            background: white;
-            box-shadow: 0 8px 24px rgba(59,130,246,0.08);
+        .perfect-card:hover {
+            transform: translateY(-4px);
         }
 
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-card .price {
+        .perfect-card .icon {
             font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0 0.25rem;
+            margin-bottom: 0.75rem;
+            display: block;
         }
 
-        .pricing-card .price span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #64748B;
+        .perfect-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1A1A2E;
         }
 
-        .pricing-card ul {
-            list-style: none;
-            margin: 1.5rem 0 2rem;
-            text-align: left;
-        }
-
-        .pricing-card ul li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #F1F5F9;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .pricing-card ul li::before {
-            content: "✓";
-            color: #3B82F6;
-            font-weight: 700;
-        }
-
-        .pricing-card .btn-primary {
-            width: 100%;
-            text-align: center;
+        .perfect-card p {
+            color: #475569;
+            font-size: 0.95rem;
         }
 
         /* Footer */
@@ -312,7 +280,6 @@
             text-align: center;
             color: #94A3B8;
             font-size: 0.9rem;
-            border-top: 1px solid #E2E8F0;
             background: white;
         }
 
@@ -343,7 +310,7 @@
             .feature-grid {
                 grid-template-columns: 1fr;
             }
-            .pricing-grid {
+            .perfect-grid {
                 grid-template-columns: 1fr;
             }
             .header .container {
@@ -379,7 +346,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Clean Addresses, <span>Smart Timezones</span>, Better Sales</h1>
-                <p>Automatically verify US addresses in Zoho CRM, enrich with latitude/longitude, county, and local time zone. Improve sales follow-ups and data quality.</p>
+                <p>Automatically verify US addresses in Zoho CRM, enrich with latitude, longitude, county, and local time zone. Improve sales follow-ups and data quality.</p>
                 <div class="hero-buttons">
                     <a href="guide.html" class="btn-primary">View User Guide</a>
                     <a href="#" class="btn-secondary">Get It Now</a>
@@ -431,34 +398,30 @@
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="pricing">
+    <!-- Perfect For -->
+    <section class="perfect-for">
         <div class="container">
-            <h2>Simple, Transparent Pricing</h2>
-            <p>Start with a free plan and upgrade as your data needs grow.</p>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Free</h3>
-                    <div class="price">$0 <span>/month</span></div>
-                    <ul>
-                        <li>Basic verification (100/month)</li>
-                        <li>Time zone lookup</li>
-                        <li>US address coverage</li>
-                        <li>Manual triggers only</li>
-                    </ul>
-                    <a href="#" class="btn-primary">Install Free</a>
+            <h2>Perfect For</h2>
+            <div class="perfect-grid">
+                <div class="perfect-card">
+                    <span class="icon">👥</span>
+                    <h3>Sales Teams</h3>
+                    <p>Needing accurate lead and contact addresses for better follow-ups and territory planning.</p>
                 </div>
-                <div class="pricing-card pro">
-                    <h3>Pro</h3>
-                    <div class="price">$29 <span>/month</span></div>
-                    <ul>
-                        <li>Unlimited verification</li>
-                        <li>Batch & scheduled checks</li>
-                        <li>Full API access</li>
-                        <li>Advanced analytics & maps</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="#" class="btn-primary">Upgrade to Pro</a>
+                <div class="perfect-card">
+                    <span class="icon">📦</span>
+                    <h3>Operations Teams</h3>
+                    <p>Reducing shipping errors and delivery costs with verified customer addresses.</p>
+                </div>
+                <div class="perfect-card">
+                    <span class="icon">🎯</span>
+                    <h3>Marketing Teams</h3>
+                    <p>Targeting campaigns by geographic data and time zones for better engagement.</p>
+                </div>
+                <div class="perfect-card">
+                    <span class="icon">📈</span>
+                    <h3>Reporting Teams</h3>
+                    <p>Gaining geographic insights and data quality metrics for better decision-making.</p>
                 </div>
             </div>
         </div>
