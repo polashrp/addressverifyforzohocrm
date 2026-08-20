@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         * {
             margin: 0;
@@ -34,8 +36,8 @@
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 10;
-            background: rgba(255,255,255,0.9);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(8px);
         }
 
@@ -84,7 +86,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 5rem 0 4rem;
+            padding: 4rem 0;
             background: white;
             border-bottom: 1px solid #E2E8F0;
         }
@@ -92,16 +94,16 @@
         .hero .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .hero-content h1 {
-            font-size: 3.25rem;
+            font-size: 3rem;
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .hero-content h1 span {
@@ -112,7 +114,7 @@
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #475569;
             margin-bottom: 2rem;
             max-width: 90%;
@@ -154,16 +156,17 @@
             background: #E2E8F0;
         }
 
-        .hero-image {
-            background: #F1F5F9;
+        .hero-map {
+            height: 350px;
             border-radius: 16px;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #94A3B8;
-            border: 1px dashed #CBD5E1;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
         }
 
         /* Features Section */
@@ -238,15 +241,15 @@
 
         .perfect-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .perfect-card {
             background: white;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 16px;
             border: 1px solid #E2E8F0;
             text-align: center;
@@ -271,26 +274,59 @@
 
         .perfect-card p {
             color: #475569;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* Footer */
         .footer {
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
             color: #94A3B8;
             font-size: 0.9rem;
             background: white;
+            border-top: 1px solid #E2E8F0;
         }
 
-        .footer a {
-            color: #3B82F6;
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #475569;
             text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: #3B82F6;
+        }
+
+        .footer-divider {
+            color: #CBD5E1;
+        }
+
+        .footer-copy {
+            color: #94A3B8;
+            font-size: 0.85rem;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
             .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .perfect-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .hero .container {
@@ -303,6 +339,9 @@
             }
             .hero-buttons {
                 justify-content: center;
+            }
+            .hero-map {
+                height: 280px;
             }
         }
 
@@ -321,7 +360,13 @@
                 margin: 0 0.75rem;
             }
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+            .footer-links {
+                gap: 1rem;
+            }
+            .hero-map {
+                height: 220px;
             }
         }
     </style>
@@ -352,8 +397,8 @@
                     <a href="#" class="btn-secondary">Get It Now</a>
                 </div>
             </div>
-            <div class="hero-image">
-                🗺️ Dashboard Preview — Map View & Analytics
+            <div class="hero-map" id="map-container">
+                <div id="map"></div>
             </div>
         </div>
     </section>
@@ -430,9 +475,63 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Address Verify & Customer Timezone for Zoho CRM. Built with ❤️ by your team.</p>
-            <p><a href="#">Support</a> · <a href="#">Privacy</a> · <a href="#">Marketplace Listing</a></p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <span class="footer-divider">·</span>
+                <a href="terms.html">Terms</a>
+                <span class="footer-divider">·</span>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-copy">
+                © 2026 Address Verify & Customer Timezone for Zoho CRM. Built with ❤️.
+            </div>
         </div>
     </footer>
+
+    <!-- Leaflet JS for OpenStreetMap -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create map centered on USA
+            const map = L.map('map').setView([39.8283, -98.5795], 4);
+
+            // Add OpenStreetMap tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Sample customer locations (example data)
+            const locations = [
+                { lat: 40.7128, lng: -74.0060, name: 'New York, NY' },
+                { lat: 34.0522, lng: -118.2437, name: 'Los Angeles, CA' },
+                { lat: 41.8781, lng: -87.6298, name: 'Chicago, IL' },
+                { lat: 29.7604, lng: -95.3698, name: 'Houston, TX' },
+                { lat: 39.9526, lng: -75.1652, name: 'Philadelphia, PA' },
+                { lat: 33.4484, lng: -112.0740, name: 'Phoenix, AZ' },
+                { lat: 37.7749, lng: -122.4194, name: 'San Francisco, CA' },
+                { lat: 47.6062, lng: -122.3321, name: 'Seattle, WA' }
+            ];
+
+            // Add markers for each location
+            locations.forEach(function(location) {
+                L.marker([location.lat, location.lng])
+                    .addTo(map)
+                    .bindPopup(`
+                        <strong>${location.name}</strong><br>
+                        <span style="color: #3B82F6;">✓ Verified Address</span>
+                    `);
+            });
+
+            // Add a custom legend or note
+            L.control.attribution({ position: 'bottomright' }).addTo(map);
+
+            // Ensure map renders correctly after load
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 500);
+        });
+    </script>
 </body>
 </html>
