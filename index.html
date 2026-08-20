@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Address Verify & Customer Timezone | Zoho CRM Extension</title>
+    <title>Address Verify and Customer Timezone for Zoho CRM</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <!-- Leaflet CSS for OpenStreetMap -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         * {
@@ -29,7 +28,6 @@
             padding: 0 2rem;
         }
 
-        /* Header */
         .header {
             background: white;
             border-bottom: 1px solid #E2E8F0;
@@ -78,13 +76,13 @@
             padding: 0.5rem 1.25rem;
             border-radius: 8px;
             font-weight: 600;
+            transition: background 0.2s;
         }
 
         .nav a.cta-button:hover {
             background: #2563EB;
         }
 
-        /* Hero Section */
         .hero {
             padding: 4rem 0;
             background: white;
@@ -169,7 +167,6 @@
             width: 100%;
         }
 
-        /* Features Section */
         .features {
             padding: 4rem 0;
             background: white;
@@ -224,7 +221,6 @@
             font-size: 0.95rem;
         }
 
-        /* Perfect For Section */
         .perfect-for {
             padding: 4rem 0;
             background: #F8FAFC;
@@ -277,7 +273,6 @@
             font-size: 0.9rem;
         }
 
-        /* Footer */
         .footer {
             padding: 2.5rem 0;
             text-align: center;
@@ -321,7 +316,6 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive */
         @media (max-width: 1024px) {
             .feature-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -372,7 +366,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -381,20 +374,19 @@
             <nav class="nav">
                 <a href="index.html">Home</a>
                 <a href="guide.html">Guide</a>
-                <a href="#" class="cta-button">Install from Marketplace</a>
+                <a href="https://marketplace.zoho.com/app/crm/address-verify-and-customer-timezone-for-zoho-crm" class="cta-button" target="_blank">Install from Marketplace</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Clean Addresses, <span>Smart Timezones</span>, Better Sales</h1>
-                <p>Automatically verify US addresses in Zoho CRM, enrich with latitude, longitude, county, and local time zone. Improve sales follow-ups and data quality.</p>
+                <h1>Reach Customers at <span>the Right Time</span> with Accurate Addresses</h1>
+                <p>Automatically verify US addresses in Zoho CRM, set local time zones, and ensure your mail and calls reach customers when it matters most.</p>
                 <div class="hero-buttons">
                     <a href="guide.html" class="btn-primary">View User Guide</a>
-                    <a href="#" class="btn-secondary">Get It Now</a>
+                    <a href="https://marketplace.zoho.com/app/crm/address-verify-and-customer-timezone-for-zoho-crm" class="btn-secondary" target="_blank">Get It Now</a>
                 </div>
             </div>
             <div class="hero-map" id="map-container">
@@ -403,21 +395,25 @@
         </div>
     </section>
 
-    <!-- Features -->
     <section class="features">
         <div class="container">
-            <h2>Everything You Need for Clean Data</h2>
-            <p>From automatic verification to sales intelligence, this extension keeps your CRM data accurate and actionable.</p>
+            <h2>Everything You Need for Accurate Customer Data</h2>
+            <p>From address verification to time zone intelligence, this extension keeps your CRM data reliable and actionable.</p>
             <div class="feature-grid">
                 <div class="feature-card">
                     <span class="icon">✅</span>
-                    <h3>Address Verification</h3>
-                    <p>Automatically verify and standardize US addresses in Leads, Contacts, and Accounts. Catch errors before they cost you.</p>
+                    <h3>Automatic Address Verification</h3>
+                    <p>Verify and standardize US addresses in Leads, Contacts, and Accounts. Catch errors before they cost you time and money.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🕐</span>
+                    <h3>Customer Time Zone Lookup</h3>
+                    <p>Set the correct local time for every contact. Know the best time to call or email your customers.</p>
                 </div>
                 <div class="feature-card">
                     <span class="icon">🌍</span>
-                    <h3>Global Enrichment</h3>
-                    <p>Append latitude, longitude, county, and customer time zone to every record. Know when to call and where they are.</p>
+                    <h3>Geographical Enrichment</h3>
+                    <p>Append latitude, longitude, and county to every record. Gain geographic insights for better targeting.</p>
                 </div>
                 <div class="feature-card">
                     <span class="icon">🔍</span>
@@ -425,13 +421,8 @@
                     <p>Detect duplicates, score data quality, and prioritize cleaning efforts with built-in quality scoring.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="icon">🗺️</span>
-                    <h3>Sales Intelligence</h3>
-                    <p>Visualize customers on a map, assign territories, and plan routes for field sales teams.</p>
-                </div>
-                <div class="feature-card">
                     <span class="icon">⚡</span>
-                    <h3>Automation & Batch</h3>
+                    <h3>Automation & Batch Processing</h3>
                     <p>Set triggers for real-time verification or run batch jobs to clean existing records on a schedule.</p>
                 </div>
                 <div class="feature-card">
@@ -443,7 +434,6 @@
         </div>
     </section>
 
-    <!-- Perfect For -->
     <section class="perfect-for">
         <div class="container">
             <h2>Perfect For</h2>
@@ -451,28 +441,27 @@
                 <div class="perfect-card">
                     <span class="icon">👥</span>
                     <h3>Sales Teams</h3>
-                    <p>Needing accurate lead and contact addresses for better follow-ups and territory planning.</p>
+                    <p>Reach leads and contacts at the right time with accurate time zone data.</p>
                 </div>
                 <div class="perfect-card">
                     <span class="icon">📦</span>
                     <h3>Operations Teams</h3>
-                    <p>Reducing shipping errors and delivery costs with verified customer addresses.</p>
+                    <p>Reduce shipping errors and costs with verified customer addresses.</p>
                 </div>
                 <div class="perfect-card">
                     <span class="icon">🎯</span>
                     <h3>Marketing Teams</h3>
-                    <p>Targeting campaigns by geographic data and time zones for better engagement.</p>
+                    <p>Target campaigns by geographic data and time zones for better engagement.</p>
                 </div>
                 <div class="perfect-card">
                     <span class="icon">📈</span>
                     <h3>Reporting Teams</h3>
-                    <p>Gaining geographic insights and data quality metrics for better decision-making.</p>
+                    <p>Gain geographic insights and data quality metrics for better decision-making.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
@@ -481,28 +470,24 @@
                 <a href="terms.html">Terms</a>
                 <span class="footer-divider">·</span>
                 <a href="contact.html">Contact</a>
+                <span class="footer-divider">·</span>
+                <a href="https://polashrp.github.io/hrpdev/" target="_blank">HRP Dev</a>
             </div>
             <div class="footer-copy">
-                © 2026 Address Verify & Customer Timezone for Zoho CRM. Built with ❤️.
+                © 2026 Address Verify and Customer Timezone for Zoho CRM. Built with ❤️ by <a href="https://polashrp.github.io/hrpdev/" target="_blank" style="color:#3B82F6;text-decoration:none;">HRP Dev</a>.
             </div>
         </div>
     </footer>
 
-    <!-- Leaflet JS for OpenStreetMap -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Initialize the map when the page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Create map centered on USA
             const map = L.map('map').setView([39.8283, -98.5795], 4);
-
-            // Add OpenStreetMap tile layer
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                 maxZoom: 19
             }).addTo(map);
 
-            // Sample customer locations (example data)
             const locations = [
                 { lat: 40.7128, lng: -74.0060, name: 'New York, NY' },
                 { lat: 34.0522, lng: -118.2437, name: 'Los Angeles, CA' },
@@ -514,7 +499,6 @@
                 { lat: 47.6062, lng: -122.3321, name: 'Seattle, WA' }
             ];
 
-            // Add markers for each location
             locations.forEach(function(location) {
                 L.marker([location.lat, location.lng])
                     .addTo(map)
@@ -524,10 +508,6 @@
                     `);
             });
 
-            // Add a custom legend or note
-            L.control.attribution({ position: 'bottomright' }).addTo(map);
-
-            // Ensure map renders correctly after load
             setTimeout(function() {
                 map.invalidateSize();
             }, 500);
