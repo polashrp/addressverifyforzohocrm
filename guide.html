@@ -18,7 +18,7 @@
             font-family: 'Inter', sans-serif;
             color: #1A1A2E;
             background-color: #F8FAFC;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .container {
@@ -27,6 +27,7 @@
             padding: 0 2rem;
         }
 
+        /* Header */
         .header {
             background: white;
             border-bottom: 1px solid #E2E8F0;
@@ -34,7 +35,7 @@
             position: sticky;
             top: 0;
             z-index: 10;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(8px);
         }
 
@@ -43,6 +44,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            max-width: 1200px;
         }
 
         .logo {
@@ -81,71 +83,65 @@
             background: #2563EB;
         }
 
-        .toc {
-            background: #F1F5F9;
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        .toc h2 {
-            font-size: 1.2rem;
-            margin-top: 0 !important;
-            margin-bottom: 0.75rem !important;
-        }
-
-        .toc ul {
-            list-style: none;
-            margin: 0 !important;
-            padding: 0;
-        }
-
-        .toc ul li {
-            margin-bottom: 0.25rem;
-        }
-
-        .toc ul li a {
-            color: #3B82F6;
-            text-decoration: none;
-        }
-
-        .toc ul li a:hover {
-            text-decoration: underline;
-        }
-
+        /* Content */
         .content {
-            padding: 3rem 0 4rem;
+            padding: 3rem 0 5rem;
         }
 
         .content h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
         }
 
         .content .subtitle {
-            font-size: 1.2rem;
             color: #475569;
+            font-size: 1.1rem;
             margin-bottom: 2.5rem;
             border-bottom: 1px solid #E2E8F0;
             padding-bottom: 1.5rem;
+        }
+
+        /* Executive Summary */
+        .executive-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #E2E8F0;
+        }
+
+        .executive-summary .item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .executive-summary .item .icon {
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .executive-summary .item p {
+            margin: 0;
+            color: #334155;
         }
 
         .content h2 {
             font-size: 1.8rem;
             font-weight: 700;
             margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            scroll-margin-top: 80px;
+            margin-bottom: 0.75rem;
         }
 
         .content h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-top: 1.75rem;
             margin-bottom: 0.5rem;
-            scroll-margin-top: 80px;
         }
 
         .content p {
@@ -205,44 +201,77 @@
         }
 
         .code-block {
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
+            background: #1E293B;
+            color: #E2E8F0;
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
-            margin: 0.5rem 0 1rem;
-            overflow-x: auto;
-            color: #1E293B;
-        }
-
-        .field-mapping {
-            background: white;
-            border: 1px solid #E2E8F0;
-            border-radius: 8px;
-            padding: 1.5rem;
             margin: 1.5rem 0;
         }
 
-        .field-mapping h4 {
-            margin-bottom: 0.75rem;
-            color: #1A1A2E;
+        .code-block .comment {
+            color: #94A3B8;
         }
 
+        .code-block .keyword {
+            color: #60A5FA;
+        }
+
+        .code-block .string {
+            color: #A7F3D0;
+        }
+
+        .code-block .function {
+            color: #FBBF24;
+        }
+
+        /* Footer */
         .footer {
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
             color: #94A3B8;
             font-size: 0.9rem;
-            border-top: 1px solid #E2E8F0;
             background: white;
+            border-top: 1px solid #E2E8F0;
         }
 
-        .footer a {
-            color: #3B82F6;
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #475569;
             text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
         }
 
+        .footer-links a:hover {
+            color: #3B82F6;
+        }
+
+        .footer-divider {
+            color: #CBD5E1;
+        }
+
+        .footer-copy {
+            color: #94A3B8;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .header .container {
                 flex-direction: column;
@@ -254,10 +283,18 @@
             .content h1 {
                 font-size: 2.2rem;
             }
+            .executive-summary {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .footer-links {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -271,229 +308,320 @@
         </div>
     </header>
 
+    <!-- Content -->
     <section class="content">
         <div class="container">
             <h1>User Guide</h1>
-            <p class="subtitle">API Field Reference for the Address Verify & Customer Timezone Extension</p>
+            <p class="subtitle">Complete documentation for Address Verify & Customer Timezone for Zoho CRM</p>
 
-            <div class="toc">
-                <h2>📑 Table of Contents</h2>
-                <ul>
-                    <li><a href="#overview">Overview</a></li>
-                    <li><a href="#fields-created">Fields Created by This Extension</a></li>
-                    <li><a href="#address-detection">How Address Fields Are Detected</a></li>
-                    <li><a href="#custom-fields">Using Custom Address Fields</a></li>
-                    <li><a href="#faq">Frequently Asked Questions</a></li>
-                </ul>
+            <!-- Executive Summary -->
+            <div class="executive-summary">
+                <div class="item">
+                    <span class="icon">✅</span>
+                    <p><strong>Improve Data Quality</strong><br>Ensure all addresses are accurate and deliverable</p>
+                </div>
+                <div class="item">
+                    <span class="icon">✅</span>
+                    <p><strong>Reduce Failed Deliveries</strong><br>Catch invalid addresses before they cause problems</p>
+                </div>
+                <div class="item">
+                    <span class="icon">✅</span>
+                    <p><strong>Save Time</strong><br>Automate address verification instead of manual checking</p>
+                </div>
+                <div class="item">
+                    <span class="icon">✅</span>
+                    <p><strong>Gain Insights</strong><br>Get county, coordinates, and time zone data for every address</p>
+                </div>
             </div>
 
-            <h2 id="overview">Overview</h2>
-            <p>This extension automatically verifies US addresses in your Leads, Contacts, and Accounts modules. It enriches each record with geographical data and time zone information.</p>
+            <!-- Key Features -->
+            <h2>🚀 Key Features</h2>
 
-            <div class="note">
-                <strong>📌 Note:</strong> Verification is optimized for <strong>US addresses</strong>. Non-US addresses are skipped to conserve resources.
-            </div>
-
-            <h2 id="fields-created">Fields Created by This Extension</h2>
-            <p>The extension creates the following custom fields in your Zoho CRM. These fields all use the prefix <code>addressverifyusaforzohocrm__</code>.</p>
-
+            <h3>1. Smart Address Verification</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Display Name</th>
-                        <th>Zoho CRM API Field Name</th>
-                        <th>Field Type</th>
+                        <th>Status</th>
                         <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Address Status</td>
+                        <td><code>Verified</code></td>
+                        <td>Address is verified and deliverable</td>
+                    </tr>
+                    <tr>
+                        <td><code>Invalid</code></td>
+                        <td>Address could not be verified</td>
+                    </tr>
+                    <tr>
+                        <td><code>Outside US</code></td>
+                        <td>Address is outside the United States</td>
+                    </tr>
+                    <tr>
+                        <td><code>Missing</code></td>
+                        <td>Address information is incomplete</td>
+                    </tr>
+                    <tr>
+                        <td><code>Not Checked</code></td>
+                        <td>Address has not been verified yet</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. Enriched Address Data</h3>
+            <ul>
+                <li><strong>County</strong> — County name where the address is located</li>
+                <li><strong>County FIPS</strong> — Unique 5-digit code for the county</li>
+                <li><strong>State FIPS</strong> — 2-digit code for the state</li>
+                <li><strong>Latitude</strong> — Geographic latitude coordinate</li>
+                <li><strong>Longitude</strong> — Geographic longitude coordinate</li>
+                <li><strong>Time Zone</strong> — Time zone of the location (e.g., America/New_York)</li>
+                <li><strong>Address Details</strong> — Complete verification report</li>
+            </ul>
+
+            <h3>3. Multi-Module Support</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Module</th>
+                        <th>Address Type</th>
+                        <th>Verification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Leads</strong></td>
+                        <td>Single Address</td>
+                        <td>✅ Full Verification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contacts</strong></td>
+                        <td>Single Address</td>
+                        <td>✅ Full Verification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accounts</strong></td>
+                        <td>Billing & Shipping</td>
+                        <td>✅ Full Verification</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Installation Guide -->
+            <h2>📥 Installation Guide</h2>
+
+            <h3>Step 1: Install the Extension</h3>
+            <ol>
+                <li>Go to Zoho Marketplace</li>
+                <li>Search for "Address Verify & Customer Timezone"</li>
+                <li>Click <strong>Install</strong></li>
+                <li>Follow the installation wizard</li>
+                <li>Grant necessary permissions</li>
+            </ol>
+
+            <h3>Step 2: Set Up Workflow Rules</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Module</th>
+                        <th>Workflow Name</th>
+                        <th>Trigger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Leads</strong></td>
+                        <td>US Address Verification - Leads</td>
+                        <td>On Create / On Edit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contacts</strong></td>
+                        <td>US Address Verification - Contacts</td>
+                        <td>On Create / On Edit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accounts</strong></td>
+                        <td>US Address Verification - Accounts</td>
+                        <td>On Create / On Edit</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Workflow rules are created automatically when you install the extension. If you need to modify them, go to <strong>Setup > Workflow Rules</strong> in Zoho CRM.
+            </div>
+
+            <h3>Step 3: Add Custom Fields to Layouts</h3>
+            <ol>
+                <li>Go to <strong>Setup > Customization > Modules and Fields</strong></li>
+                <li>Select each module (Leads, Contacts, Accounts)</li>
+                <li>Click the <strong>Layouts</strong> tab</li>
+                <li>Add the extension's custom fields to your layout</li>
+                <li>Save your changes</li>
+            </ol>
+
+            <!-- Custom Fields -->
+            <h2>📦 Custom Fields Created</h2>
+
+            <h3>For All Modules (Leads, Contacts, Accounts)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>API Name</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Full Address Status</td>
                         <td><code>addressverifyusaforzohocrm__Full_Address_Status</code></td>
-                        <td>Picklist</td>
-                        <td>Verification status: Verified, Invalid, Missing, Outside US</td>
+                        <td>Valid / Invalid / Outside US / Missing</td>
                     </tr>
                     <tr>
                         <td>County</td>
                         <td><code>addressverifyusaforzohocrm__County</code></td>
-                        <td>Text</td>
-                        <td>County name from the verified address</td>
+                        <td>County name from the address</td>
                     </tr>
                     <tr>
                         <td>County FIPS</td>
                         <td><code>addressverifyusaforzohocrm__County_FIPS</code></td>
-                        <td>Text</td>
-                        <td>County FIPS code (US Census)</td>
+                        <td>5-digit county code</td>
                     </tr>
                     <tr>
-                        <td>Customer Timezone</td>
-                        <td><code>addressverifyusaforzohocrm__Customer_Timezone</code></td>
-                        <td>Text</td>
-                        <td>IANA time zone name (e.g., America/New_York)</td>
+                        <td>State FIPS</td>
+                        <td><code>addressverifyusaforzohocrm__State_FIPS</code></td>
+                        <td>2-digit state code</td>
                     </tr>
                     <tr>
                         <td>Address Details</td>
                         <td><code>addressverifyusaforzohocrm__Address_Details</code></td>
-                        <td>Text Area</td>
-                        <td>Detailed verification information</td>
+                        <td>Complete verification report</td>
+                    </tr>
+                    <tr>
+                        <td>Verified Address</td>
+                        <td><code>addressverifyusaforzohocrm__Verified_Address</code></td>
+                        <td>Standardized, postal-approved address</td>
+                    </tr>
+                    <tr>
+                        <td>Verified ZIP</td>
+                        <td><code>addressverifyusaforzohocrm__Verified_ZIP</code></td>
+                        <td>Standardized 5-digit ZIP code</td>
+                    </tr>
+                    <tr>
+                        <td>Latitude</td>
+                        <td><code>addressverifyusaforzohocrm__Latitude</code></td>
+                        <td>Geographic coordinate</td>
+                    </tr>
+                    <tr>
+                        <td>Longitude</td>
+                        <td><code>addressverifyusaforzohocrm__Longitude</code></td>
+                        <td>Geographic coordinate</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Timezone</td>
+                        <td><code>addressverifyusaforzohocrm__Customer_Timezone</code></td>
+                        <td>Time zone of the location</td>
                     </tr>
                     <tr>
                         <td>Data Quality Score</td>
                         <td><code>addressverifyusaforzohocrm__Data_Quality_Score</code></td>
-                        <td>Decimal</td>
-                        <td>Score from 0–100 based on field completeness</td>
+                        <td>Score from 0–100</td>
                     </tr>
                     <tr>
                         <td>Quality Tier</td>
                         <td><code>addressverifyusaforzohocrm__Quality_Tier</code></td>
-                        <td>Picklist</td>
-                        <td>Excellent, Good, Fair, Poor</td>
+                        <td>Excellent / Good / Fair / Poor</td>
                     </tr>
                     <tr>
                         <td>Duplicate Flag</td>
                         <td><code>addressverifyusaforzohocrm__Duplicate_Flag</code></td>
-                        <td>Checkbox</td>
-                        <td>Indicates if potential duplicates exist</td>
+                        <td>Indicates potential duplicates</td>
                     </tr>
                     <tr>
                         <td>Duplicate Count</td>
                         <td><code>addressverifyusaforzohocrm__Duplicate_Count</code></td>
-                        <td>Number</td>
-                        <td>Number of potential duplicates found</td>
-                    </tr>
-                    <tr>
-                        <td>Duplicate Details</td>
-                        <td><code>addressverifyusaforzohocrm__Duplicate_Details</code></td>
-                        <td>Text Area</td>
-                        <td>Details about duplicate records</td>
+                        <td>Number of duplicates found</td>
                     </tr>
                     <tr>
                         <td>Last Verified Date</td>
                         <td><code>addressverifyusaforzohocrm__Last_Verified_Date</code></td>
-                        <td>Date/Time</td>
                         <td>When the address was last verified</td>
                     </tr>
                 </tbody>
             </table>
 
+            <!-- Troubleshooting -->
+            <h2>🛠️ Troubleshooting</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issue</th>
+                        <th>Solution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Address Status shows "Not Checked"</td>
+                        <td>Run the workflow or click the Verify Address button on the record</td>
+                    </tr>
+                    <tr>
+                        <td>County not found</td>
+                        <td>Address may be outside US or coordinates missing</td>
+                    </tr>
+                    <tr>
+                        <td>Latitude/Longitude not updating</td>
+                        <td>Fields may be named differently; the extension detects standard field names</td>
+                    </tr>
+                    <tr>
+                        <td>Custom fields not showing</td>
+                        <td>Add them to the Layout in Setup > Customization</td>
+                    </tr>
+                    <tr>
+                        <td>Button not working</td>
+                        <td>Ensure the function is saved and the button is configured correctly</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- FAQs -->
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <h3>Does this work with non-US addresses?</h3>
+            <p>No, this extension is specifically designed for US addresses only. Non-US addresses are automatically skipped.</p>
+
+            <h3>Do I need to configure field mapping?</h3>
+            <p>No, the extension automatically detects your CRM's standard address fields. If you use custom field names, you can modify the detection logic in the Custom Functions.</p>
+
+            <h3>Can I verify addresses manually?</h3>
+            <p>Yes! Use the "Verify Address" button on any record, or edit and save a record to trigger the workflow.</p>
+
+            <h3>Can I verify both Billing and Shipping addresses?</h3>
+            <p>Yes, for Accounts, both Billing and Shipping addresses are verified separately.</p>
+
+            <h3>How do I run reports?</h3>
+            <p>The extension includes a dashboard widget that shows verification stats, quality scores, and time zone distribution. You can also run reports using Zoho CRM's standard reporting tools.</p>
+
             <div class="tip">
-                <strong>💡 Important:</strong> When referencing these fields in Zoho CRM reports, workflows, or custom functions, always use the <strong>API Field Name</strong> (the second column above), not the display name.
-            </div>
-
-            <h2 id="address-detection">How Address Fields Are Detected</h2>
-            <p>The extension automatically detects standard Zoho CRM address fields. Here are the field names it looks for:</p>
-
-            <div class="field-mapping">
-                <h4>📍 Standard Address Field Mapping</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Address Component</th>
-                            <th>Zoho CRM API Field Names (in order of priority)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Street Address</strong></td>
-                            <td><code>Street</code>, <code>Address</code>, <code>Mailing_Street</code>, <code>Other_Street</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>City</strong></td>
-                            <td><code>City</code>, <code>Mailing_City</code>, <code>Other_City</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>State</strong></td>
-                            <td><code>State</code>, <code>Mailing_State</code>, <code>Other_State</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>ZIP / Postal Code</strong></td>
-                            <td><code>Zip_Code</code>, <code>Mailing_Zip</code>, <code>Other_Zip</code>, <code>Postal_Code</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Country</strong></td>
-                            <td><code>Country</code>, <code>Mailing_Country</code>, <code>Other_Country</code></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="field-mapping">
-                <h4>📍 Latitude & Longitude Field Detection</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Field Type</th>
-                            <th>Zoho CRM API Field Names (in order of priority)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Latitude</strong></td>
-                            <td><code>Latitude__c</code>, <code>Lat__c</code>, <code>LAT__c</code></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Longitude</strong></td>
-                            <td><code>Longitude__c</code>, <code>Lon__c</code>, <code>LNG__c</code></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #475569;">
-                    If no standard field is found, the extension will look for any custom field containing "lat" or "lon"/"lng" in its API name.
-                </p>
-            </div>
-
-            <h2 id="custom-fields">Using Custom Address Fields</h2>
-            <p>If your organization uses custom field names for addresses, you can modify the field detection logic in the extension's custom functions. The relevant functions are:</p>
-
-            <ul>
-                <li><strong><code>addressverifyusaforzohocrm.detectAddressFields</code></strong> — Controls which fields are used for Street, City, State, Zip, and Country.</li>
-                <li><strong><code>addressverifyusaforzohocrm.detectLatitudeField</code></strong> — Controls which field is used for Latitude.</li>
-                <li><strong><code>addressverifyusaforzohocrm.detectLongitudeField</code></strong> — Controls which field is used for Longitude.</li>
-            </ul>
-
-            <div class="note">
-                <strong>📌 To customize:</strong>
-                <ol>
-                    <li>Go to <strong>Setup > Developer Space > Functions</strong> in Zoho CRM.</li>
-                    <li>Find and edit the function you want to modify.</li>
-                    <li>Add your custom field API names to the appropriate list in the function.</li>
-                    <li>Save the function.</li>
-                </ol>
-            </div>
-
-            <p>For example, if you have a custom field called <code>Custom_Street_Address__c</code>, you would add it to the <code>streetFields</code> list in the <code>detectAddressFields</code> function.</p>
-
-            <div class="code-block">
-                <strong>Example:</strong> Adding a custom street field<br>
-                <code>streetFields = {"Street", "Address", "Mailing_Street", "Other_Street", "Custom_Street_Address__c"};</code>
-            </div>
-
-            <h2 id="faq">Frequently Asked Questions</h2>
-            
-            <h3>What API names do the extension's fields use?</h3>
-            <p>All fields created by this extension start with <code>addressverifyusaforzohocrm__</code>. See the table in the <a href="#fields-created">Fields Created</a> section for the complete list.</p>
-
-            <h3>How do I find the API name of a field in Zoho CRM?</h3>
-            <p>Go to <strong>Setup > Customization > Fields</strong>, select the module, and look at the <strong>API Name</strong> column.</p>
-
-            <h3>Can I use these fields in reports?</h3>
-            <p>Yes! All extension fields are available in Zoho CRM reports. Use the API field names (with the <code>addressverifyusaforzohocrm__</code> prefix) when building reports.</p>
-
-            <h3>What if I'm using different address field names?</h3>
-            <p>You can customize the field detection in the extension's functions as described in the <a href="#custom-fields">Using Custom Address Fields</a> section above.</p>
-
-           
-
-            <div class="note">
-                <strong>📌 Need help?</strong> Visit our <a href="#">support page</a> or email us at support@yourapp.com.
+                <strong>💡 Need more help?</strong> Visit our <a href="contact.html">Contact page</a> or email us at support@yourapp.com.
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Address Verify & Customer Timezone for Zoho CRM. Built with ❤️ by your team.</p>
-            <p><a href="#">Support</a> · <a href="#">Privacy</a> · <a href="#">Marketplace Listing</a></p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <span class="footer-divider">·</span>
+                <a href="terms.html">Terms</a>
+                <span class="footer-divider">·</span>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-copy">
+                © 2026 Address Verify & Customer Timezone for Zoho CRM. Built with ❤️.
+            </div>
         </div>
     </footer>
 </body>
